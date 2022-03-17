@@ -1,0 +1,159 @@
+// variable
+$fondo:#b9b9b9;
+// mixin
+@mixin piepag{box-shadow:none; color:#f1f1f1; list-style-type:none;text-decoration:none;;
+    font-size: x-large;}
+
+    @mixin  piepaghover {     background-color: rgb(236, 236, 236);
+        color: rgb(0, 0, 0);
+        border-radius:map-get($variado, borderad) ;
+        
+    }
+// maps
+    $variado:(dispgrid:grid, marg:0px, padd:0px, borderad:4px, borde:none);
+
+    // uso de mixin
+@mixin footer {   display: flex;
+    background-color: black;
+  color: white;
+font-size: larger;
+justify-content: flex-start;
+margin-top: 100px;
+margin-left: -20px;
+
+}
+@mixin parallax{  min-height: 300px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;}
+
+
+
+
+body{background-color: $fondo;}
+h1{text-align: center;}
+h2{text-decoration:underline;}
+
+.parallax{
+    /* The image used */
+    background-image: url("../articulos/parallax.jpg");
+  @include parallax;
+  
+  }
+
+
+
+    /* Lista footer */
+    .lista_footer{
+    @include piepag;
+        
+      &:hover{
+        @include piepaghover; 
+            
+        
+      }}
+      
+    
+    
+      footer{@include footer;
+     
+    }
+    
+    
+    
+    
+      *{
+        font-family: 'Lobster', cursive;
+      text-decoration: none;
+      list-style: none;
+      margin: map-get($variado, marg);
+     
+      
+      }
+
+.row {  margin: map-get($variado, marg);
+border: map-get($variado, borde )
+}
+a img{width:100% ;}
+
+.cards_container{display: map-get($variado, dispgrid );
+grid-template-columns: auto auto;
+
+}
+.div1:hover, .div2:hover{opacity: 75%;
+
+}
+
+
+.body_tienda{background-image: url("../Imagenes/breathe.png") ;
+@include parallax;
+}
+
+.form-check{background-color: rgb(36, 36, 36);
+color: white;
+margin: map-get($variado, marg);
+padding-bottom: 1px;
+
+}
+
+.btn_style{background-color: black;
+color: white;
+border-radius:map-get($variado, borderad) ;
+border: none;
+&:hover{background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-radius:map-get($variado, borderad) ;
+    border: map-get($variado, borde )}
+    
+}
+
+$footercolor:(insta:#ff00d4, twitter:#008cff, face:#2600ff, coder:#5f5f5f, contacto:#ffffff);
+
+
+
+
+@each $red, $color in $footercolor {
+    .footer#{$red} {
+    color: $color;
+        
+    }
+ }
+ 
+.btn_contacto{@extend .btn_style;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+.btn_carrito{@extend .btn_style}
+
+.contacto_sec{
+    background-color: rgba(151, 151, 151, 0.486);
+    padding-top: 10px; padding-bottom: 5px;
+    font-size: larger;
+  
+  }
+
+
+
+  .carrito_grid{display: grid;
+    grid-template-columns: auto ;
+    grid-template-rows: auto auto auto;
+    row-gap: 20px;
+    width: 400px;
+    background-color: rgba(151, 151, 151, 0.623);
+    padding-right: 100px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+    }
+    
+    .pago_grid{display: grid;
+      grid-template-columns: max-content;
+      background-color: rgba(151, 151, 151, 0.486);
+      padding-top: 10px;
+      padding-bottom: 10px;
+      font-size: large;
+      
+      }
